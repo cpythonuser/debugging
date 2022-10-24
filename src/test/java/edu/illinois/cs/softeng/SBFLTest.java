@@ -21,6 +21,7 @@ import org.junit.Test;
  */
 public class SBFLTest
 {
+	private static final String NEWLINE_SEPARATOR = System.getProperty("line.separator");
 
 	@Test
 	public void test1()
@@ -37,7 +38,7 @@ public class SBFLTest
 				FileUtils
 						.readFileToString(getFileFromResource(
 								"debug-info/failedtests1.txt"), "utf-8")
-						.split("\n"));
+						.split(NEWLINE_SEPARATOR));
 
 		// define the buggy line
 		String buggyLine = "org.jsoup.parser.HtmlTreeBuilder:432";
@@ -61,7 +62,7 @@ public class SBFLTest
 				FileUtils
 						.readFileToString(getFileFromResource(
 								"debug-info/failedtests2.txt"), "utf-8")
-						.split("\n"));
+						.split(NEWLINE_SEPARATOR));
 		String buggyLine = "org.jsoup.parser.HtmlTreeBuilderState:768";
 		Map<String, Double> susp = SBFL.Tarantula(cov, failedTests);
 		assertEquals(0.8786717752234994, SBFL.getSusp(susp, buggyLine), 10e-5);
@@ -77,7 +78,7 @@ public class SBFLTest
 				FileUtils
 						.readFileToString(getFileFromResource(
 								"debug-info/failedtests3.txt"), "utf-8")
-						.split("\n"));
+						.split(NEWLINE_SEPARATOR));
 		String buggyLine = "org.jsoup.parser.TokeniserState:219";
 		Map<String, Double> susp = SBFL.Tarantula(cov, failedTests);
 
